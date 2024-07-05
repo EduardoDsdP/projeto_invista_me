@@ -1,0 +1,31 @@
+{% extends 'investimentos/base.html' %}
+{% block conteudo %}
+<div class="container bg-dark text-white">
+    <h1 class="text-center">Central de Investimentos</h1>
+    <button class="btn btn-success mb-2"><a class="text-white" href="{% url 'novo_investimento' %}">Novo Investimento</a></button>
+    <table class="table table-dark table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Investimento</th>
+                <th>Valor</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dado in dados %}
+            <tr>
+                <td>{{ dado.id }}</td>
+                <td>{{ dado.investimento }}</td>
+                <td>{{ dado.valor }}</td>
+                <td><button class="btn btn-info"><a class="text-white" href="{% url 'detalhe' dado.id %}">Detalhe</a></button></td>
+                <td><button class="btn btn-warning"><a class="text-white" href="{% url 'editar' dado.id %}">Editar</a></button></td>
+                <td><button class="btn btn-danger"><a class="text-white" href="{% url 'excluir' dado.id %}">Excluir</a></button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
